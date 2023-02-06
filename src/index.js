@@ -1,51 +1,140 @@
 /**
- * Represents a book.
- * @constructor
- * @param {string} title - The title of the book.
- * @param {string} author - The author of the book.
+ * A Type representing a tag for a todo item
+ * @typedef {Object} TagItem
+ * @property {number} id - The unique ID for the tag
+ * @property {string} content - The content of the tag
  */
-function Book(title, author) {}
 
 /**
- * Both of these will link to the bar function.
- * @see {@link bar}
- * @see bar
+ * A Type representing a todo item
+ * @typedef {Object} TodoItem
+ * @property {number} id - The unique ID for the todo item
+ * @property {string} content - The content of the todo item
+ * @property {boolean} isDone - Whether the todo item is completed or not
+ * @property {string} category - The category the todo item belongs to
+ * @property {TagItem[]} tags - An array of tags for the todo item
  */
-function foo() {}
-
-// Use the inline {@link} tag to include a link within a free-form description.
-/**
- * @see {@link foo} for further information.
- * @see {@link http://github.com|GitHub}
- */
-function bar() {}
 
 /**
- * Generic dairy product.
- * @constructor
+ * A class for managing a list of todo items
+ * @class TodoService
  */
-function DairyProduct() {}
+class TodoService {
+  /**
+   * Creates an instance of TodoService.
+   */
+  constructor() {
+    /**
+     * The todo list.
+     * @private
+     * @type {TodoItem[]}
+     */
+    this.todoList = [];
+    /**
+     * The next available todo id.
+     * @private
+     * @type {number}
+     */
+    this.todoId = Date.now();
+    /**
+     * The next available tag id.
+     * @private
+     * @type {number}
+     */
+    this.tagId = Date.now();
+  }
 
-/**
- * Check whether the dairy product is solid at room temperature.
- * @abstract
- * @return {boolean}
- */
-DairyProduct.prototype.isSolid = function () {
-	throw new Error('must be implemented by subclass!');
-};
+  /**
+   * Create a new Todo item.
+   * @param {string} [content=''] - The content of the Todo item.
+   * @throws {Error} If the content is empty.
+   * @returns {TodoItem} The created Todo item.
+   */
+  createTodo(content) {}
 
-/**
- * Cool, refreshing milk.
- * @constructor
- * @augments DairyProduct
- */
-function Milk() {}
+  /**
+   * Read the Todo items.
+   * @returns {TodoItem[]} The Todo items.
+   */
+  readTodos() {}
 
-/**
- * Check whether milk is solid at room temperature.
- * @return {boolean} Always returns false.
- */
-Milk.prototype.isSolid = function () {
-	return false;
-};
+  /**
+   * Update the content of a Todo item.
+   * @param {number} todoId - The id of the Todo item.
+   * @param {string} content - The new content of the Todo item.
+   * @throws {Error} If the Todo item with the specified id is not found.
+   * @returns {TodoItem} The updated Todo item.
+   */
+  updateTodoContent(todoId, content) {}
+
+  /**
+   * Toggle the `isDone` property of a Todo item.
+   * @param {number} todoId - The id of the Todo item.
+   * @throws {Error} If the Todo item with the specified id is not found.
+   * @returns {TodoItem} The updated Todo item.
+   */
+  updateTodoIsDone(todoId) {}
+
+  /**
+   * Update the category of a todo item by its id.
+   * @param {number} todoId - The id of the todo item.
+   * @param {string} [category=''] - The new category of the todo item.
+   * @returns {TodoItem} - The updated todo item.
+   * @throws {Error} If the todo item with the given id is not found.
+   * @throws {Error} If the category parameter is empty.
+   */
+  updateTodoCategoryById(todoId, category = '') {}
+
+  /**
+   * Create tags for a todo item by its id.
+   * @param {number} todoId - The id of the todo item.
+   * @param {...string} tags - The tags to be added to the todo item.
+   * @returns {TodoItem} - The updated todo item.
+   * @throws {Error} If the todo item with the given id is not found.
+   */
+  createTodoTagById(todoId, ...tags) {}
+
+  /**
+   * Update a tag for a todo item by its id and tag id.
+   * @param {number} todoId - The id of the todo item.
+   * @param {number} tagId - The id of the tag to be updated.
+   * @param {string} tagContent - The new content of the tag.
+   * @returns {TodoItem} - The updated todo item.
+   * @throws {Error} If the todo item with the given id is not found.
+   * @throws {Error} If the tag with the given id is not found.
+   */
+  updateTodoTagById(todoId, tagId, tagContent) {
+    return {};
+  }
+
+  /**
+   * Deletes a todo item from the todoList by its id.
+   * @param {number} todoId - The id of the todo item to delete.
+   * @returns {TodoItem[]} - The updated todoList.
+   * @throws {Error} If the todo item with the specified id is not found.
+   */
+  deleteTodoById(todoId) {}
+
+  /**
+   * Deletes all todo items in the todoList.
+   * @returns {TodoItem[]} - The updated todoList (now empty).
+   */
+  deleteAllTodo() {}
+
+  /**
+   * Deletes all tags from a todo item.
+   * @param {number} todoId - The id of the todo item to remove tags from.
+   * @returns {TodoItem} - The updated todo item with its tags removed.
+   * @throws {Error} If the todo item with the specified id is not found.
+   */
+  deleteAllTagsById(todoId) {}
+
+  /**
+   * Deletes a specific tag from a todo item.
+   * @param {number} todoId - The id of the todo item.
+   * @param {number} tagId - The id of the tag to delete.
+   * @returns {TodoItem} - The updated todo item with the specified tag removed.
+   * @throws {Error} If the todo item or tag with the specified id is not found.
+   */
+  deleteTagById(todoId, tagId) {}
+}
