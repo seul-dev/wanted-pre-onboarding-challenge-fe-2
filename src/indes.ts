@@ -9,7 +9,7 @@
     content: string;
     isDone: boolean;
     category: string;
-    tags: TagItem[];
+    tags?: TagItem[];
   }
 
   interface TodoService {
@@ -22,7 +22,7 @@
     updateTodoCategoryById(todoId: number, category?: string): void;
     updateTodoTagById(todoId: number, tagId: number, tagContent: string): void;
     deleteTodoById(todoId: number): void;
-    deleteAllTodo(): void;
+    deleteAllTodos(): void;
     deleteAllTagsById(todoId: number): void;
   }
 }
