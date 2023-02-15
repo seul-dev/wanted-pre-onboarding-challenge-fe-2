@@ -1,9 +1,9 @@
-interface TagItem {
+export interface TagItem {
   id: number;
   content: string;
 }
 
-interface TodoItem {
+export interface TodoItem {
   id: number;
   content: string;
   isDone: boolean;
@@ -11,7 +11,7 @@ interface TodoItem {
   tags: TagItem[];
 }
 
-interface TodoService {
+export interface TodoService {
   createTodo(content: string): void;
   createTodoTagById(todoId: number, ...tags: string[]): void;
   readTodoById(todoId: number): TodoItem;
