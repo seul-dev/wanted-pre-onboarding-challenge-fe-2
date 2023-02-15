@@ -20,6 +20,14 @@ class TodoServiceImpl implements TodoService {
     return todoIndex;
   }
 
+  private findTagIndex(todo: TodoItem, tagId: number) {
+    const tagIndex = todo.tags.findIndex((tag) => tag.id === tagId);
+    if (tagIndex === -1) {
+      throw new Error(`Tag Item with id: ${tagId} not found`);
+    }
+    return tagIndex;
+  }
+
   createTodo(content: string) {
     const newTodo: TodoItem = {
       id: this.todoId,
@@ -52,6 +60,7 @@ class TodoServiceImpl implements TodoService {
     }));
     this.todoList[todoIndex] = { ...todo, tags: [...todo.tags, ...newTags] };
   }
+
   updateTodoContentById(todoId: number, content: string) {
     const todoIndex = this.findTodoIndex(todoId);
     const todo = this.todoList[todoIndex];
@@ -80,10 +89,7 @@ class TodoServiceImpl implements TodoService {
   updateTodoTagById(todoId: number, tagId: number, tagContent: string) {
     const todoIndex = this.findTodoIndex(todoId);
     const todo = this.todoList[todoIndex];
-    const tagIndex = todo.tags.findIndex((tag) => tag.id === tagId);
-    if (tagIndex === -1) {
-      throw new Error(`Tag Item with id: ${tagId} not found`);
-    }
+    const tagIndex = this.findTagIndex(todo, tagId);
     this.todoList[todoIndex].tags[tagIndex] = {
       id: tagId,
       content: this.inputValidator(tagContent),
@@ -91,11 +97,19 @@ class TodoServiceImpl implements TodoService {
   }
 
   deleteTodoById(todoId: number) {
-    const todoIndex = this.findTodoIndex(todoId);
-    const copiedTodoList = this.todoList.filter(
-      (todo) => todo.id !== todoIndex
-    );
+    this.findTodoIndex(todoId);
+    const copiedTodoList = this.todoList.filter((todo) => todo.id !== todoId);
     this.todoList = copiedTodoList;
+  }
+
+  deleteTodoTagById(todoId: number, tagId: number) {
+    const todoIndex = this.findTodoIndex(todoId);
+    const todo = this.todoList[todoIndex];
+    const tagIndex = this.findTagIndex(todo, tagId);
+    const newTags = this.todoList[todoIndex].tags.filter(
+      (_, index) => index !== tagIndex
+    );
+    this.todoList[todoIndex].tags = newTags;
   }
 
   deleteAllTodos() {
@@ -120,11 +134,5 @@ todoService.updateTodoIsDoneById(0);
 todoService.updateTodoCategoryById(0, 'category');
 todoService.updateTodoTagById(0, 3, 'update-tag4');
 todoService.readTodos();
-todoService.deleteAllTagsById(0);
-todoService.readTodos();
-
-todoService.deleteTodoById(0);
-console.clear();
-todoService.readTodos();
-todoService.deleteAllTodos();
+todoService.deleteTodoTagById(0, 5);
 todoService.readTodos();
