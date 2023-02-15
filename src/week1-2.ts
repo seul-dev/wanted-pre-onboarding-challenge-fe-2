@@ -38,11 +38,11 @@ class TodoListImpl implements TodoList {
     if (content === '') {
       throw new Error('Content cannot be empty');
     }
-    return content;
   }
 
   createTodo(todo: TodoType) {
-    if (this.verifyContent(todo.content)) {
+    this.verifyContent(todo.content);
+    if (todo.content) {
       this.todos.push(todo);
     }
   }
@@ -54,8 +54,10 @@ class TodoListImpl implements TodoList {
 
   updateTodo(todo: TodoType) {
     const todoIndex = this.findTodoIndex(todo.id);
-
-    this.todoList[todoIndex] = { ...this.todoList[todoIndex], ...todo };
+    this.verifyContent(todo.content);
+    if (todo.content) {
+      this.todoList[todoIndex] = { ...this.todoList[todoIndex], ...todo };
+    }
   }
 
   updateTodoTag(id: number, tagIndex: number, tag: string) {
@@ -64,6 +66,7 @@ class TodoListImpl implements TodoList {
     if (!tags || !tags[tagIndex]) {
       throw new Error('Cannot find tag Item with tagIndex');
     }
+    this.verifyContent(tag);
     const newTags = tags.map((originalTag, index) =>
       index === tagIndex ? tag : originalTag
     );
