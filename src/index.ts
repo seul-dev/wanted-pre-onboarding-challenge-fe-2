@@ -21,6 +21,7 @@ export interface TodoService {
   updateTodoCategoryById(todoId: number, category: string): void;
   updateTodoTagById(todoId: number, tagId: number, tagContent: string): void;
   deleteTodoById(todoId: number): void;
+  deleteTodoTagById(todoId: number, tagId: number): void;
   deleteAllTodos(): void;
   deleteAllTagsById(todoId: number): void;
 }
