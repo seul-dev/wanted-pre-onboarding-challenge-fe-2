@@ -8,7 +8,7 @@ interface TodoItem {
   content: string;
   isDone: boolean;
   category: string;
-  tags?: TagItem[];
+  tags: TagItem[];
 }
 
 interface TodoService {
@@ -18,7 +18,7 @@ interface TodoService {
   readTodos(): TodoItem[];
   updateTodoContentById(todoId: number, content: string): void;
   updateTodoIsDoneById(todoId: number): void;
-  updateTodoCategoryById(todoId: number, category?: string): void;
+  updateTodoCategoryById(todoId: number, category: string): void;
   updateTodoTagById(todoId: number, tagId: number, tagContent: string): void;
   deleteTodoById(todoId: number): void;
   deleteAllTodos(): void;
