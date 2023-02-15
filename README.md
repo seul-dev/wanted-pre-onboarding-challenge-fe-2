@@ -17,7 +17,7 @@
 ## 🔗 세션별 과제
 
 - [week 1-1](https://github.com/seul-dev/wanted-pre-onboarding-challenge-fe-2/issues/1)
-- [week 1-2]()
+- [week 1-2](https://github.com/seul-dev/wanted-pre-onboarding-challenge-fe-2/pull/5)
 
 ### 필수 요구사항
 
