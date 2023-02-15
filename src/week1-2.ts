@@ -28,9 +28,6 @@ class TodoListImpl implements TodoList {
 
   private findTodoIndex(id: number) {
     const todoIndex = this.todoList.findIndex((todo) => todo.id === id);
-    if (todoIndex === -1) {
-      throw new Error('Cannot find todo Item with id');
-    }
     return todoIndex;
   }
 
@@ -54,6 +51,9 @@ class TodoListImpl implements TodoList {
 
   updateTodo(todo: TodoType) {
     const todoIndex = this.findTodoIndex(todo.id);
+    if (todoIndex === -1) {
+      throw new Error('Not found Id');
+    }
     this.verifyContent(todo.content);
     if (todo.content) {
       this.todoList[todoIndex] = { ...this.todoList[todoIndex], ...todo };
@@ -64,7 +64,7 @@ class TodoListImpl implements TodoList {
     const todoIndex = this.findTodoIndex(id);
     const tags = this.todoList[todoIndex].tags;
     if (!tags || !tags[tagIndex]) {
-      throw new Error('Cannot find tag Item with tagIndex');
+      return;
     }
     this.verifyContent(tag);
     const newTags = tags.map((originalTag, index) =>
@@ -87,7 +87,7 @@ class TodoListImpl implements TodoList {
   deleteTag(todoIndex: number, tagIndex: number) {
     const tags = this.todoList[todoIndex].tags;
     if (!tags || !tags[tagIndex]) {
-      throw new Error('Cannot find tag Item with tagIndex');
+      return;
     }
     const newTags = tags.filter((_, index) => index !== tagIndex);
     this.todoList[todoIndex].tags = newTags;
