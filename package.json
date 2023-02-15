@@ -1,12 +1,16 @@
 {
-	"name": "jsdoc-boilerplate",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"docs": "jsdoc -c jsdoc.json"
-	},
-	"devDependencies": {
-		"jsdoc": "^3.6.11"
-	}
+  "name": "jsdoc-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docs": "jsdoc -c jsdoc.json",
+    "try": "ts-node src/implements.ts"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.6.11"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.1"
+  }
 }
