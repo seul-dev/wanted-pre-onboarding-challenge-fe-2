@@ -17,14 +17,14 @@ Rules and principles:
 ## 목차
 
 1. [objects](#1-objects)
-2. [types from types](#types-from-types)
-3. [in operator type narrowing](#in-operator-type-narrowing)
-4. [type predicates](#type-predicates)
-5. [utility type](#utility-type)
-6. [function overloads](#function-overloads)
-7. [generics](#generics)
-8. [uitility type](#uitility-type)
-9. [generics](#generics)
+2. [types from types](#2-types-from-types)
+3. [in operator type narrowing](#3-in-operator-type-narrowing)
+4. [type predicates](#4-type-predicates)
+5. [utility type](#5-utility-type)
+6. [function overloads](#6-function-overloads)
+7. [generics](#7-generics)
+8. [uitility type](#8-uitility-type)
+9. [generics](#9-generics)
 
 ---
 
@@ -254,11 +254,12 @@ if문이 수행해야하는 역할은 전달인자가 role 프로퍼티를를 �
 
 - keyword: [the in operator narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#the-in-operator-narrowing), [mdn- in operator](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/in)
 
-![Untitled](%60Typescript%20Exercises%20b9a0bdaa87f1463cabca3980a95dc62a/Untitled.png)
+![ts-exercise1](https://user-images.githubusercontent.com/96093996/219578148-3c0677e0-51b6-4af7-a90f-19a66d5073ce.png)
 
 객체가 특정 프로퍼티를 가지고 있는지 확인하는 다른 방법인 `hasOwnProperty()`는 type narrowing을 수행하지 않는다.
 
-![Untitled](%60Typescript%20Exercises%20b9a0bdaa87f1463cabca3980a95dc62a/Untitled%201.png)
+![ts-exercise2](https://user-images.githubusercontent.com/96093996/219578209-91c2d5f2-e900-4eb7-8bf6-e6f1afdf154d.png)
+
 
 ## 4. type predicates
 
@@ -734,7 +735,8 @@ export function swap<T1, T2>(v1: T1, v2: T2): [T2, T1] {
 
 매개변수에 특정한 타입을 지정하면 아래의 다양한 case를 해결할 수 없기 때문에 generic을 사용한다. swap 함수를 호출할때의 인자의 타입에 맞게 리턴할 수 있다. 리턴 타입을 정확히 지정하지 않으면 타입스크립트는 리턴할 배열의 원소를 유니언 타입으로 유추하기 때문에 리턴타입을 지정해줘야 한다.
 
-![Untitled](%60Typescript%20Exercises%20b9a0bdaa87f1463cabca3980a95dc62a/Untitled%202.png)
+![ts-exercise3](https://user-images.githubusercontent.com/96093996/219578428-34b46832-22a1-4f00-ac26-d701290bfe1c.png)
+
 
 ## 8. uitility type
 
