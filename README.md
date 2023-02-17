@@ -18,7 +18,7 @@
 
 - [week 1-1](https://github.com/seul-dev/wanted-pre-onboarding-challenge-fe-2/issues/1)
 - [week 1-2](https://github.com/seul-dev/wanted-pre-onboarding-challenge-fe-2/pull/5)
-
+- [week 2-1](./src/typescript-exercises.md)
 ### 필수 요구사항
 
 - [x] Todo 앱 요구사항을 참고하여 필요한 데이터를 모두 모델링한다.
