@@ -16,9 +16,9 @@
 
 ## 🔗 세션별 과제
 
-- [week 1-1](https://github.com/seul-dev/wanted-pre-onboarding-challenge-fe-2/issues/1)
-- [week 1-2](https://github.com/seul-dev/wanted-pre-onboarding-challenge-fe-2/pull/5)
-- [week 2-1](./src/typescript-exercises.md)
+- [week 1-1](https://github.com/seul-dev/wanted-pre-onboarding-challenge-fe-2/issues/1): jsdoc으로 설계한 Todo 앱을 Interface로 설계하고 모델링
+- [week 1-2](https://github.com/seul-dev/wanted-pre-onboarding-challenge-fe-2/pull/5): 타 수강생의 타이핑 즉 설계 & 모델링을 실제로 구현
+- [week 2-1](./src/typescript-exercises.md): [TypeScript Exercises](https://typescript-exercises.github.io)풀고 해설 정리
 ### 필수 요구사항
 
 - [x] Todo 앱 요구사항을 참고하여 필요한 데이터를 모두 모델링한다.
